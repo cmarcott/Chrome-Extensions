@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "Momentum Daily Picture Grabber",
+    "version": "1.0",
+    "description": "Momentum passive add-on to continuously save the momentum picture of the day to your personal collection",
+    "icons": {
+        "128": "icon128_dev.png",
+        "48": "icon48_dev.png",
+        "16": "icon16_dev.png"
+    },
+    "browser_action":{
+        "default_icon": "icon16_dev.png",
+        "default_popup": "popup.html"
+    }
+}
