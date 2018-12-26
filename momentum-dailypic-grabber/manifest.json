@@ -9,7 +9,7 @@
         "16": "img/icon16_dev.png"
     },
     "browser_action":{
-        "default_icon": "icon16_dev.png",
+        "default_icon": "img/icon16_dev.png",
         "default_popup": "popup.html"
     },
     "permissions": [
