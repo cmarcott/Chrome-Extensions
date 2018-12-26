@@ -20,6 +20,11 @@ function checkForNewTab() {
 }
 
 function requestDOM() {
+
+    // Currently works on non chrome:// extensions
+    var backgroundPage = chrome.extension.getBackgroundPage();
+    console.log(backgroundPage.document);
+
     // Working on getting around httprequest restrictions
    // Make a call to url, with data 
     /*$.ajax(
@@ -52,6 +57,4 @@ chrome.tabs.onCreated.addListener(function(tab) {
             requestDOM();
         }
     });
-
-
 })
