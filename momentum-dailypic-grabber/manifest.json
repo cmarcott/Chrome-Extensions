@@ -14,7 +14,8 @@
     },
     "permissions": [
         "tabs",
-        "activeTab"
+        "activeTab",
+        "<all_urls>"
     ],
     "background": { 
         "page": "background.html",
