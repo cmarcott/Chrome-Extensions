@@ -1,27 +1,55 @@
-var momentumId = "chrome://newtab/";
-var tabURL;
+// Default new tab chrome URL
+var newTabURL = "chrome://newtab/";
+var currentTabURL;
+
+// Momentum extension id (Need to access extentionurl in httprequest as chrome://newtab is explicitly not allowed as of Chrome 61)
+var momentumId = "chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/dashboard.html";
+
+function parseImageURL(domContent) {
+    console.log("recieved message: " + domContent);
+}
+
+function checkForNewTab() {
+    console.log("momentumURL: " + newTabURL);
+    console.log("TabURL: " + currentTabURL);
+    if (currentTabURL == newTabURL) {
+        console.debug("This is the new tab screen");
+        return true;
+    }
+    return false;
+}
+
+function requestDOM() {
+    // Working on getting around httprequest restrictions
+   // Make a call to url, with data 
+    /*$.ajax(
+        { url: "http://" + momentumId,
+        dataType: 'html',
+        success: function(data) {
+            console.log("Success: " + data)
+        },
+        error: function(e) 
+        {
+            alert('Error: ' + e);
+        }
+    });
+
+    /*function reqListener () {
+        console.log(this.responseText);
+    }
+    
+    var oReq = new XMLHttpRequest();
+    oReq.addEventListener("load", reqListener);
+    oReq.open("GET", "http://" + momentumId);
+    oReq.send();*/
+}
 
 chrome.tabs.onCreated.addListener(function(tab) {
-    
-    function checkForNewTab() {
-        
-        console.log("momentumURL: " + momentumId);
-        console.log("TabURL: " + tabURL);
-        if (tabURL == momentumId) {
-            console.debug("This is the new tab screen");
-            return true;
-        }
-        return false;
-        
-    }
 
     chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
-        tabURL = tabs[0].url;
-        console.log("TabURL: " + tabURL);
+        currentTabURL = tabs[0].url;
         if (checkForNewTab()) {
-            console.log("Was True");
-        } else {
-            console.log("Was False");
+            requestDOM();
         }
     });
 

@@ -13,13 +13,11 @@
         "default_popup": "popup.html"
     },
     "permissions": [
-        "tabs"
+        "tabs",
+        "activeTab"
     ],
-    "background": {
-        "scripts": [
-          "js/background.js"
-        ],
+    "background": { 
+        "page": "background.html",
         "persistent": false
       }
-
 }
