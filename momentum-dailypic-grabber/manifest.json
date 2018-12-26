@@ -14,5 +14,12 @@
     },
     "permissions": [
         "tabs"
-    ]
+    ],
+    "background": {
+        "scripts": [
+          "js/background.js"
+        ],
+        "persistent": false
+      }
+
 }

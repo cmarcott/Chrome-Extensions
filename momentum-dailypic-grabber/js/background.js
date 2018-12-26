@@ -1,24 +1,28 @@
 var momentumId = "chrome://newtab/";
 var tabURL;
 
-document.addEventListener('DOMContentLoaded', function() {
+chrome.tabs.onCreated.addListener(function(tab) {
     
     function checkForNewTab() {
         
         console.log("momentumURL: " + momentumId);
         console.log("TabURL: " + tabURL);
         if (tabURL == momentumId) {
-            $('#main-title').html('Hello');
-        } else {
-            $('#main-title').text('Not Hello');
+            console.debug("This is the new tab screen");
+            return true;
         }
-        //document.getElementById("main-title").innerHTML = "Title";
+        return false;
+        
     }
 
     chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
         tabURL = tabs[0].url;
         console.log("TabURL: " + tabURL);
-        checkForNewTab();
+        if (checkForNewTab()) {
+            console.log("Was True");
+        } else {
+            console.log("Was False");
+        }
     });
 
 
