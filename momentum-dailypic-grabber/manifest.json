@@ -11,5 +11,8 @@
     "browser_action":{
         "default_icon": "icon16_dev.png",
         "default_popup": "popup.html"
-    }
+    },
+    "permissions": [
+        "tabs"
+    ]
 }
