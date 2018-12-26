@@ -27,26 +27,14 @@ function requestDOM() {
 
     // Working on getting around httprequest restrictions
    // Make a call to url, with data 
-    /*$.ajax(
-        { url: "http://" + momentumId,
-        dataType: 'html',
-        success: function(data) {
-            console.log("Success: " + data)
-        },
-        error: function(e) 
-        {
-            alert('Error: ' + e);
-        }
-    });
 
-    /*function reqListener () {
+    function reqListener () {
         console.log(this.responseText);
     }
-    
     var oReq = new XMLHttpRequest();
     oReq.addEventListener("load", reqListener);
-    oReq.open("GET", "http://" + momentumId);
-    oReq.send();*/
+    oReq.open("GET", newTabURL);
+    oReq.send();
 }
 
 chrome.tabs.onCreated.addListener(function(tab) {
